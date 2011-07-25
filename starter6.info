@@ -1,0 +1,70 @@
+
+name = Nombre del theme
+description = Descripción del theme
+version = 1.0
+core = 6.x
+engine = "phptemplate"
+
+
+; CSS
+; ***************************************************************************
+
+; Por defecto declaramos una hoja de estilos CSS, pero si queréis utilizar LESS, necesitaréis borrar la línea del .css y descomentar la del .less.
+; Para utilizar LESS, es necesario instalar un módulo de Drupal que genera un CSS a partir del LESS: http://drupal.org/project/less
+; Simplemente se activa el módulo y listo. Si no os funciona es porque no tenéis permisos de escritura en la carpeta files (donde el módulo genera el nuevo CSS).
+
+stylesheets[all][] = css/reset.css
+stylesheets[all][] = css/styles.css
+; stylesheets[all][] = css/styles.less
+
+
+
+; JAVASCRIPT
+; ***************************************************************************
+
+; Si queréis llamar a funciones de JS externos (jcarousel, etc.), pensad en que debéis adjuntar aquí esos JS externos y siempre antes del scripts.js, que debe ser el último JS invocado.
+
+scripts[] = js/scripts.js
+
+
+
+; REGIONES
+; ***************************************************************************
+
+; Aquí definimos todas las regiones que utilizaremos en todos los layouts (o en las page.tpl en su defecto).
+; Podéis añadir las que queráis, las sidebar las llamo así para que no sean necesariamente left o right, ya que pueden estar las dos sidebar a la izquierda del content, o al revés en algunos layouts.
+
+regions[header] = Header
+regions[content] = Main content
+regions[sidebar_first] = Sidebar first
+regions[sidebar_second] = Sidebar second
+regions[footer] = Footer
+
+
+
+; CONTEXT LAYOUTS
+; ***************************************************************************
+
+; Si queréis utilizar layouts, os dejo definidos un par, sino borrad todo esto.
+; El 1º es el layout "default" que es obligatorio y que debe ser el que más utilicéis en el site, de hecho, todos los Context utilizarán éste por defecto.
+; Para el default suelo utilizar el "templates/layout/page.tpl".
+
+; Todas las regiones del site deben estar declaradas arriba, como siempre.
+; Cada layout puede utilizar las regiones que quiera de las anteriormente declaradas.
+; Cuando se declara el [template] del layout, se pone el nombre del archivo sin su extensión.
+
+; Para cambiar el layout de alguna página, basta con crear un Context y definirle una Condición (que se cargue el layout según un menú, un path, o lo que sea) y poner una Reacción de Bloques.
+; Ahí podéis definir primero el layout y luego qué bloques asignáis a cada región de ese layout.
+; De todas formas, los contexts los crean los desarrolladores, así que seremos nosotros quienes simplemente entramos en la reacción bloques y le cambiamos el layout (si no lo han hecho ellos).
+
+; Layout: Default
+	layouts[default][name] = "Default"
+	layouts[default][description] = "Descripción del layout"
+	layouts[default][template] = "page"
+	layouts[default][regions][] = "id_de_la_region"
+
+; Layout: Nombre del layout
+;	layouts[id_layout][name] = "Nombre del layout"
+;	layouts[id_layout][description] = "Descripción del layout"
+;	layouts[id_layout][template] = "nombre_archivo"
+;	layouts[id_layout][regions][] = "id_de_la_region"
