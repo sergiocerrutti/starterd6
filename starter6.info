@@ -1,9 +1,11 @@
 
-name = Nombre del theme
-description = Descripción del theme
+name = Nombre proyecto
+description = Theme personalizado para ..., creado por ideup!
 version = 1.0
 core = 6.x
 engine = "phptemplate"
+
+screenshot = img/screenshot.png
 
 
 ; CSS
